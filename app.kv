@@ -1,0 +1,340 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenM:
+    id: S0
+    Screen1:
+    Screen2:
+    Screen3:
+    Screen4:
+    Screen5:
+
+
+<Screen1>:
+    name:'selection'
+    id: S1
+
+    MDTopAppBar:
+        type: "small"
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .96}
+
+        MDTopAppBarTitle:
+            text: "AI Market Predictor"
+            pos_hint: {"center_x": .5}
+
+        MDTopAppBarTrailingButtonContainer:
+
+            MDActionTopAppBarButton:
+                id: appbarbutt
+                icon: "diamond-stone"
+                on_release:
+                    app.prem_butt()
+    
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .2}
+        on_release:
+            app.button_fun1()
+
+        MDButtonText:
+            text: "Predict"
+            font_style: "Headline"
+            role: "small"
+
+    MDLabel:
+        pos_hint: {"center_y": .85}
+        halign: "center"
+        text: "Select market to predict:"
+        font_style: "Title"
+        role: "large"
+        
+    MDLabel:
+        pos_hint: {"center_y": .7}
+        halign: "center"
+        text: "Select how many days ahead\nyou want the prediction:"
+        font_style: "Title"
+        role: "medium"
+
+    MDLabel:
+        id: internet
+        pos_hint: {"center_y": .15}
+        halign: "center"
+        text: ""
+        theme_text_color: "Custom"
+        text_color: "red"
+        font_style: "Title"
+        role: "medium"
+
+    MDButton:
+        id: drop_item
+        style: "outlined"
+        pos_hint: {"center_x": .5, "center_y": .8}
+        on_release: app.open_drop_item_menu(self)
+
+        MDButtonIcon:
+            icon: "chevron-down-circle"
+
+        MDButtonText:
+            id: drop_text
+            text: "EUR/USD"
+            font_style: "Title"
+
+    MDButton:
+        id: drop_item2
+        style: "outlined"
+        pos_hint: {"center_x": .5, "center_y": .63}
+        on_release: app.open_drop_item_menu2(self)
+
+        MDButtonIcon:
+            icon: "chevron-down-circle"
+
+        MDButtonText:
+            id: drop_text2
+            text: "1"
+            font_style: "Title"
+
+    Image:
+        source: "ai-min4.jpg"
+        pos_hint: {"center_x":.5, "center_y": .42}
+        size_hint_y: 0.3
+
+<Screen2>:
+    name:'learning'
+    id: S2
+
+    MDTopAppBar:
+        type: "small"
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .96}
+
+        MDTopAppBarTitle:
+            text: "AI Market Predictor"
+            pos_hint: {"center_x": .5}
+    
+    MDLabel:
+        pos_hint: {"center_y": .35}
+        halign: "center"
+        text: "Learning..."
+        font_style: "Headline"
+        role: "medium"
+
+    Image:
+        source: "AI2.png"
+        pos_hint: {"center_x":.5, "center_y": .65}
+        size_hint_y: .45
+
+<Screen3>:
+    name:'prediction'
+    id: S3
+
+    MDTopAppBar:
+        type: "small"
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .96}
+
+        MDTopAppBarTitle:
+            text: "AI Market Predictor"
+            pos_hint: {"center_x": .5}
+    
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .2}
+        on_release:
+            app.restart()
+
+        MDButtonText:
+            text: "Predict again!"
+            font_style: "Headline"
+            role: "small"
+
+    MDLabel:
+        id: pred_title
+        pos_hint: {"center_y": .8}
+        halign: "center"
+        text: "Prediction for ,  day(s) ahead:\n"
+        font_style: "Title"
+        role: "medium"
+
+    MDLabel:
+        id: prediction
+        pos_hint: {"center_x": 0.65, "center_y": .74}
+        halign: "center"
+        text: " "
+        theme_text_color: "Custom"
+        text_color: "gold"
+        font_style: "Headline"
+        role: "medium"
+
+    MDLabel:
+        id: mean_error
+        pos_hint: {"center_y": .4}
+        halign: "center"
+        text: f"AI model's mean prediction error:"
+        font_style: "Title"
+        role: "medium"
+
+    MDLabel:
+        id: warning
+        pos_hint: {"center_y": .3}
+        halign: "center"
+        text: "*This is NOT financial advice.\nNote that any investment may involve losing money.\nYou make every investment decision at your own risk."
+        theme_text_color: "Custom"
+        text_color: "gold"
+        font_style: "Body"
+        role: "small"
+
+    Image:
+        source: "AIH5.png"
+        pos_hint: {"center_x":.5, "center_y": .62}
+        size_hint_y: .2
+
+<Screen4>:
+    name:'premium'
+    id: S4
+
+    MDTopAppBar:
+        type: "small"
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .96}
+
+        MDTopAppBarLeadingButtonContainer:
+
+            MDActionTopAppBarButton:
+                icon: "arrow-collapse-left"
+                on_release:
+                    root.manager.current='selection'
+
+        MDTopAppBarTitle:
+            text: "AI Market Predictor"
+            pos_hint: {"center_x": .5}
+    
+    MDLabel:
+        pos_hint: {"center_y": .80}
+        halign: "center"
+        text: "GET PREMIUM VERSION!\n"
+        theme_text_color: "Custom"
+        text_color: "gold"
+        font_style: "Headline"
+        role: "small"
+        
+    MDLabel:
+        pos_hint: {"center_y": .72}
+        halign: "center"
+        text: "Unlock all markets\nand predict them for up to 15 days\nby the obtained premium code!"
+        theme_text_color: "Custom"
+        text_color: "gold"
+        font_style: "Title"
+        role: "large"
+
+    MDTextField:
+        id:mail
+        mode: "outlined"
+        validator: "email"
+        size_hint_x: None
+        width: "240dp"
+        pos_hint: {"center_x": .5, "center_y": .57}
+
+        MDTextFieldLeadingIcon:
+            icon: "account"
+
+        MDTextFieldHintText:
+            text: "Your email"
+
+        MDTextFieldHelperText:
+            text: "Write yor email"
+            mode: "on_focus"
+
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .45}
+        on_release:
+            app.conf_mail()
+
+        MDButtonText:
+            text: "Confirm your email"
+            font_style: "Body"
+            role: "large"
+
+    MDTextField:
+        id:code
+        mode: "outlined"
+        text: ""
+        size_hint_x: None
+        width: "240dp"
+        pos_hint: {"center_x": .5, "center_y": .33}
+
+        MDTextFieldHintText:
+            text: "Premium code"
+
+        MDTextFieldHelperText:
+            text: "Write your special premium code"
+            mode: "on_focus"
+
+        MDTextFieldMaxLengthText:
+            max_text_length: 15
+
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .21}
+        on_release:
+            app.apply_code()
+
+        MDButtonText:
+            text: "Apply"
+            font_style: "Body"
+            role: "large"
+
+    MDLabel:
+        id:code_err
+        pos_hint: {"center_y": .16}
+        halign: "center"
+        text: ""
+        theme_text_color: "Custom"
+        text_color: "red"
+        font_style: "Body"
+        role: "small"
+
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .07}
+        on_release:
+            root.manager.current='how'
+
+        MDButtonText:
+            text: "How to get the premium code?"
+            font_style: "Body"
+            role: "large"
+
+<Screen5>:
+    name:'how'
+    id: S5
+
+    MDTopAppBar:
+        type: "small"
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .96}
+
+        MDTopAppBarTitle:
+            text: "AI Market Predictor"
+            pos_hint: {"center_x": .5}
+
+    MDLabel:
+        pos_hint: {"center_y": .5}
+        halign: "center"
+        text: "Enter your email address and pay $5 via PayPal to the email address: ai@proton.com\n\nThe payment title must be THE SAME EMAIL address that you entered in this app.\n\nThe premium code will be generated specifically for your email address and sent to you within 48 hours.\n\nNote 1: After receiving the premium code to your email address, you will have 24 hours to enter it in the app.\n\nNote 2: The code will unlock the full functionality of the app for a month\n\nNote 3: Do not change your email address! The email address provided in the app and in the payment title must be the same."
+        theme_text_color: "Custom"
+        text_color: "gold"
+        font_style: "Title"
+        role: "medium"
+
+    MDButton:
+        style: "filled"
+        pos_hint: {"center_x": .5, "center_y": .065}
+        on_release:
+            root.manager.current='premium'
+
+        MDButtonText:
+            text: "Got it!"
+            font_style: "Title"
+            role: "large"
